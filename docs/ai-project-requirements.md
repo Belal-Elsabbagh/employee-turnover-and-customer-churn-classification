@@ -24,3 +24,7 @@ The LaTeX template will be sent by the Dr but in general, these are the necessar
 - <https://raw.githubusercontent.com/mwitiderrick/kerasDO/master/HR_comma_sep.csv>
 - <https://www.kaggle.com/datasets/aakash50897/churn-modellingcsv>
 - <https://www.kaggle.com/datasets/blastchar/telco-customer-churn>
+
+## Github Repository
+
+- <https://github.com/Belal-Elsabbagh/employee-turnover-and-customer-churn-classification.git>
