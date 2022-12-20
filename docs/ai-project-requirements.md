@@ -14,9 +14,12 @@ The LaTeX template will be sent by the Dr but in general, these are the necessar
 - Abstract
 - Introduction
 - Related work
-- Dataset description and samples
-- Model description
-- Score comparison
+- Proposed methodology
+  - Dataset description and samples
+  - Model description
+- Results
+  - Score comparison
+  - Discussion
 - Conclusion
 
 ## Datasets from project description
