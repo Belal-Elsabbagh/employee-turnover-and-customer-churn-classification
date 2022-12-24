@@ -51,3 +51,15 @@ The LaTeX template will be sent by the Dr but in general, these are the necessar
   - test
 2. Compare results
 3. Write paper
+
+## Measuring Results Performance
+
+- Confusion matrix
+- Accuracy
+- Precision
+- Recall
+- Specificity
+- F1 score
+- Precision-Recall or PR curve
+- ROC (Receiver Operating Characteristics) curve
+- PR vs ROC curve.
