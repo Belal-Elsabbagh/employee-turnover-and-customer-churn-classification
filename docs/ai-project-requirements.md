@@ -31,3 +31,23 @@ The LaTeX template will be sent by the Dr but in general, these are the necessar
 ## Github Repository
 
 - <https://github.com/Belal-Elsabbagh/employee-turnover-and-customer-churn-classification.git>
+
+
+## Algorithms
+
+- KNN
+- Decision Tree
+- SVM
+- Naive Bayes
+- Logistic regression
+- Random forest
+
+## Process
+
+1. Train the models
+  - read csv file.
+  - split
+  - build model
+  - test
+2. Compare results
+3. Write paper
