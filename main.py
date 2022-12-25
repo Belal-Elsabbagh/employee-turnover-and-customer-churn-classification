@@ -1,10 +1,13 @@
 """
 The main module. Execution starts here
 """
-from src.dataset_handler import load_csv_dataset
+from test import logistic_regression, svm
 
 
 if __name__ == '__main__':
-    print('Started Execution')
-    df = load_csv_dataset(r'data\customer-churn.csv')
-    print(df)
+    print('Logistic Regression')
+    logistic_regression.test_1_logistic_regression()
+    print('---------------------------')
+    print('SVM')
+    svm.test_1_svm()
+    print('---------------------------')

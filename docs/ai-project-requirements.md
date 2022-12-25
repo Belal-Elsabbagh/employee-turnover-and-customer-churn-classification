@@ -28,19 +28,19 @@ The LaTeX template will be sent by the Dr but in general, these are the necessar
 - <https://www.kaggle.com/datasets/aakash50897/churn-modellingcsv>
 - <https://www.kaggle.com/datasets/blastchar/telco-customer-churn>
 
-## Github Repository
+## GitHub Repository
 
 - <https://github.com/Belal-Elsabbagh/employee-turnover-and-customer-churn-classification.git>
 
 
 ## Algorithms
 
-- KNN
-- Decision Tree
-- SVM
-- Naive Bayes
-- Logistic regression
-- Random forest
+- KNN (nouran)
+- Decision Tree (habiba)
+- SVM (belal)
+- Naive Bayes (rana)
+- Logistic regression (belal, rana)
+- Random forest (habiba, nouran)
 
 ## Process
 

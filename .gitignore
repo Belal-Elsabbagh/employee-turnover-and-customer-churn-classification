@@ -1,2 +1,10 @@
 /**/__pycache__
 /**/**/__pycache__
+.idea/.gitignore
+.idea/csv-editor.xml
+.idea/employee-turnover-and-customer-churn-classification.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+/out/
