@@ -14,7 +14,8 @@ def preprocess_1(df, exclude_cols):
 
 def preprocess_2(df, exclude_cols):
     df = df.loc[:, ~df.columns.isin(exclude_cols)]
-    transformer = ce.OneHotEncoder(cols=['salary', 'department'])
+    df['salary'] = df['salary'].map({'low': 1, 'medium': 2, 'high': 3})
+    transformer = ce.OneHotEncoder(cols=['department'])
     return transformer.fit_transform(df)
 
 
