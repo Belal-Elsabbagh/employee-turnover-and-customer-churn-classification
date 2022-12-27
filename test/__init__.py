@@ -1,15 +1,17 @@
 from src.tester import base_test
 
 
-def preprocess_1(df):
+def preprocess_1(df, exclude_cols):
+    df = df.loc[:, ~df.columns.isin(exclude_cols)]
     return df.replace({"Gender": {"Male": 1, "Female": 0}})
 
-def preprocess_2(df):
+def preprocess_2(df, exclude_cols):
+    df = df.loc[:, ~df.columns.isin(exclude_cols)]
     return df.replace({"salary": {"low": 1, "medium": 2, "high": 3}})
 
 def test_1(model, exclude_cols=None):
     if exclude_cols is None:
-        exclude_cols = ['RowNumber', 'Surname', 'Geography']
+        exclude_cols = []
     file_path = r'data\1-customer-churn.csv'
     target_col = 'Exited'
     index_col = 'CustomerId'
@@ -26,7 +28,7 @@ def test_1(model, exclude_cols=None):
 
 def test_2(model, exclude_cols=None):
     if exclude_cols is None:
-        exclude_cols = ['department']
+        exclude_cols = []
     file_path = r'data\2-hr-data.csv'
     target_col = 'left'
     index_col = None

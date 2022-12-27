@@ -33,8 +33,7 @@ def base_test(
     if exclude_cols is None:
         exclude_cols = []
     feature_train, feature_test, label_train, label_test = load_csv_dataset(
-        csv_path, index_col, target_col,
-        exclude_cols=exclude_cols, test_size=test_size, preprocess=preprocess)
+        csv_path, index_col, target_col, exclude_cols, test_size=test_size, preprocess=preprocess)
     label_train = label_train[target_col].tolist()
     label_test = label_test[target_col].tolist()
     model = train_model(base_model, feature_train, label_train, 'model.sav')
