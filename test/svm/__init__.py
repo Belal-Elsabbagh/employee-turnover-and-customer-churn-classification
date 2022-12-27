@@ -3,4 +3,4 @@ from test import test_1
 
 
 def test_1_svm():
-    test_1(svm())
+    return test_1(svm())
