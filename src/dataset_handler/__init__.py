@@ -32,7 +32,7 @@ def load_csv_dataset(
     """
     if exclude_cols is None:
         exclude_cols = []
-    df: pd.DataFrame = pd.read_csv(csv_file_path, index_col=index_col)
+    df: pd.DataFrame = pd.read_csv(csv_file_path, sep=",", index_col=index_col)
     df = preprocess(df, exclude_cols=exclude_cols)
     return train_test_split(
         df.loc[:, ~df.columns.isin([target_col, index_col])],

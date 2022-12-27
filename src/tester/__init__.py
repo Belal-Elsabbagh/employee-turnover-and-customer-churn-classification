@@ -1,5 +1,6 @@
 import json
 
+import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, ConfusionMatrixDisplay
 
@@ -11,13 +12,13 @@ def test_model(model, x_test, y_test):
     return score_test(model.predict(x_test), y_test)
 
 
-def score_test(y_pred, y_test):
+def score_test(y_pred: np.ndarray, y_test):
     ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
     plt.show()
     return {
         'accuracy': round(accuracy_score(y_test, y_pred), 3),
         'precision': round(precision_score(y_test, y_pred), 3),
-        'recall': round(recall_score(y_test, y_pred), 3),
+        'recall': round(recall_score(y_test, y_pred, average="binary"), 3),
         'f1': round(f1_score(y_test, y_pred), 3),
     }
 
