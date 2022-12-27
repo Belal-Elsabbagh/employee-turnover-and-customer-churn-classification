@@ -4,6 +4,8 @@ from src.tester import base_test
 def preprocess_1(df):
     return df.replace({"Gender": {"Male": 1, "Female": 0}})
 
+def preprocess_2(df):
+    return df.replace({"salary": {"low": 1, "medium": 2, "high": 3}})
 
 def test_1(model, exclude_cols=None):
     if exclude_cols is None:
@@ -34,5 +36,6 @@ def test_2(model, exclude_cols=None):
         index_col,
         target_col,
         test_size=0.15,
-        exclude_cols=exclude_cols
+        exclude_cols=exclude_cols,
+        preprocess=preprocess_2
     )

@@ -15,10 +15,10 @@ def score_test(y_pred, y_test):
     ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
     plt.show()
     return {
-        'accuracy': accuracy_score(y_test, y_pred),
-        'precision': precision_score(y_test, y_pred),
-        'recall': recall_score(y_test, y_pred),
-        'f1': f1_score(y_test, y_pred),
+        'accuracy': round(accuracy_score(y_test, y_pred), 3),
+        'precision': round(precision_score(y_test, y_pred), 3),
+        'recall': round(recall_score(y_test, y_pred), 3),
+        'f1': round(f1_score(y_test, y_pred), 3),
     }
 
 def base_test(
