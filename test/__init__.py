@@ -23,6 +23,7 @@ def preprocess_3(df: pd.DataFrame, exclude_cols):
     df = df.loc[:, ~df.columns.isin(exclude_cols)]
     df = df.replace({'Churn': {'Yes': 1, 'No': 0}})
     df['TotalCharges'] = df['TotalCharges'].replace(' ', '100')
+    df['Contract'] = df['Contract'].map({'Month-to-month': 1, 'One year': 2, 'Two year': 3})
     df['TotalCharges'] = df['TotalCharges'].astype('float')
     transformer = ce.OneHotEncoder(
         cols=[
@@ -38,7 +39,6 @@ def preprocess_3(df: pd.DataFrame, exclude_cols):
             'TechSupport',
             'StreamingTV',
             'StreamingMovies',
-            'Contract',
             'PaperlessBilling',
             'PaymentMethod',
         ]

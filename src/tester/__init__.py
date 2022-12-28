@@ -2,7 +2,8 @@ import json
 
 import numpy as np
 from matplotlib import pyplot as plt
-from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, ConfusionMatrixDisplay
+from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, ConfusionMatrixDisplay, \
+    confusion_matrix
 
 from src.dataset_handler import default_preprocess, load_csv_dataset
 from src.trainer import train_model
@@ -13,9 +14,17 @@ def test_model(model, x_test, y_test):
 
 
 def score_test(y_pred: np.ndarray, y_test):
-    ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
+    matrix = confusion_matrix(y_test, y_pred)
+    tn, fp, fn, tp = matrix.ravel()
+    ConfusionMatrixDisplay(matrix)
     plt.show()
     return {
+        'confusion_matrix':{
+            'tn': int(tn),
+            'fp': int(fp),
+            'fn': int(fn),
+            'tp': int(tp),
+        },
         'accuracy': round(accuracy_score(y_test, y_pred), 3),
         'precision': round(precision_score(y_test, y_pred), 3),
         'recall': round(recall_score(y_test, y_pred, average="binary"), 3),
