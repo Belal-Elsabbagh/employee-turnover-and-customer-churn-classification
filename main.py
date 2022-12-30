@@ -3,7 +3,7 @@ The main module. Execution starts here
 """
 import json
 
-from test import logistic_regression, ada_boost
+from test import logistic_regression, ada_boost, naive_bayes
 
 if __name__ == '__main__':
     results = {
@@ -16,7 +16,11 @@ if __name__ == '__main__':
             '1-customer-churn.csv': ada_boost.test_1_ada_boost(),
             '2-hr-data.csv': ada_boost.test_2_ada_boost(),
             '3-telco-customer-churn.csv': ada_boost.test_3_ada_boost()
-        }
+        },'GaussianNB': {
+            '1-customer-churn.csv': naive_bayes.test_1_naive_bayes(),
+            '2-hr-data.csv': naive_bayes.test_2_naive_bayes(),
+            '3-telco-customer-churn.csv': naive_bayes.test_3_naive_bayes()
+        },
     }
     with open('out\\test-results\\all-results.json', 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
