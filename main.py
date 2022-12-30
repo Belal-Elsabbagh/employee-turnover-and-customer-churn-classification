@@ -3,7 +3,7 @@ The main module. Execution starts here
 """
 import json
 
-from test import logistic_regression, ada_boost, decision_tree, random_forest, knn
+from test import logistic_regression, ada_boost, decision_tree, random_forest, knn, svm
 
 if __name__ == '__main__':
     results = {
@@ -31,6 +31,11 @@ if __name__ == '__main__':
             '1-customer-churn.csv': random_forest.test_1_random_forest(),
             '2-hr-data.csv': random_forest.test_2_random_forest(),
             '3-telco-customer-churn.csv': random_forest.test_3_random_forest()
+        },
+        'SVC': {
+            '1-customer-churn.csv': svm.test_1_svm(),
+            '2-hr-data.csv': svm.test_2_svm(),
+            '3-telco-customer-churn.csv': svm.test_3_svm()
         }
     }
     with open('out\\test-results\\all-results.json', 'w', encoding='utf-8') as f:
