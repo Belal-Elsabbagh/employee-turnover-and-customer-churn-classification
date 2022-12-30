@@ -19,7 +19,7 @@ def score_test(y_pred: np.ndarray, y_test):
     ConfusionMatrixDisplay(matrix)
     plt.show()
     return {
-        'confusion_matrix':{
+        'confusion_matrix': {
             'tn': int(tn),
             'fp': int(fp),
             'fn': int(fn),
@@ -30,6 +30,7 @@ def score_test(y_pred: np.ndarray, y_test):
         'recall': round(recall_score(y_test, y_pred, average="binary"), 3),
         'f1': round(f1_score(y_test, y_pred), 3),
     }
+
 
 def base_test(
         csv_path,

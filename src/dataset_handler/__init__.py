@@ -13,7 +13,7 @@ def load_csv_dataset(
         csv_file_path: str,
         index_col: str,
         target_col: str,
-        exclude_cols: list | None = None,
+        exclude_cols: list = None,
         test_size: float = 0.2,
         preprocess: callable = default_preprocess
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
