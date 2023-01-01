@@ -3,7 +3,7 @@ import json
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, ConfusionMatrixDisplay, \
-    confusion_matrix
+    confusion_matrix, auc, roc_curve
 
 from src.dataset_handler import default_preprocess, load_csv_dataset
 from src.trainer import train_model
@@ -18,6 +18,7 @@ def score_test(y_pred: np.ndarray, y_test):
     tn, fp, fn, tp = matrix.ravel()
     ConfusionMatrixDisplay(matrix)
     plt.show()
+    fpr, tpr, _ = roc_curve(y_test, y_pred, pos_label=1)
     return {
         'confusion_matrix': {
             'tn': int(tn),
@@ -25,10 +26,11 @@ def score_test(y_pred: np.ndarray, y_test):
             'fn': int(fn),
             'tp': int(tp),
         },
+        'auc': round(auc(fpr, tpr), 3),
         'accuracy': round(accuracy_score(y_test, y_pred), 3),
-        'precision': round(precision_score(y_test, y_pred), 3),
-        'recall': round(recall_score(y_test, y_pred, average="binary"), 3),
         'f1': round(f1_score(y_test, y_pred), 3),
+        'recall': round(recall_score(y_test, y_pred, average="binary"), 3),
+        'precision': round(precision_score(y_test, y_pred), 3),
     }
 
 
@@ -47,7 +49,7 @@ def base_test(
         csv_path, index_col, target_col, exclude_cols, test_size=test_size, preprocess=preprocess)
     label_train = label_train[target_col].tolist()
     label_test = label_test[target_col].tolist()
-    model = train_model(base_model, feature_train, label_train, 'model.sav')
+    model = train_model(base_model, feature_train, label_train)
     test_results = test_model(model, feature_test, label_test)
     report = {
         'model': base_model.__class__.__name__,

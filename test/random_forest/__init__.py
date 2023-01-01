@@ -6,21 +6,11 @@ from test import preprocess_3, preprocess_2, preprocess_1, test_1
 from sklearn.ensemble import RandomForestClassifier
 
 
+N_TREES = 100
+
+
 def test_1_random_forest():
-    return test_1(RandomForestClassifier(), ['RowNumber', 'CustomerId', 'Surname'])
-    df = pd.read_csv("data/1-customer-churn.csv")
-
-    inputs = preprocess_1(df, ['RowNumber', 'CustomerId', 'Surname'])
-
-    train, test = train_test_split(inputs, test_size=0.1)
-    test_labels = test['Exited']
-    test = test.drop('Exited', axis='columns')
-    train_labels = train['Exited']
-    train = train.drop('Exited', axis='columns')
-    model = tree.DecisionTreeClassifier()
-    model.fit(train, train_labels, check_input=True)
-    prediction = model.predict(test)
-    return score_test(prediction, test_labels)
+    return test_1(RandomForestClassifier(n_estimators=N_TREES), ['RowNumber', 'CustomerId', 'Surname'])
 
 
 def test_2_random_forest():
@@ -33,7 +23,7 @@ def test_2_random_forest():
     test = test.drop('left', axis='columns')
     train_labels = train['left']
     train = train.drop('left', axis='columns')
-    model = RandomForestClassifier()
+    model = RandomForestClassifier(n_estimators=N_TREES)
     model.fit(train, train_labels)
     prediction = model.predict(test)
     return score_test(prediction, test_labels)
@@ -49,7 +39,7 @@ def test_3_random_forest():
     test = test.drop('Churn', axis='columns')
     train_labels = train['Churn']
     train = train.drop('Churn', axis='columns')
-    model = RandomForestClassifier()
+    model = RandomForestClassifier(n_estimators=N_TREES)
     model.fit(train, train_labels)
     prediction = model.predict(test)
     return score_test(prediction, test_labels)
