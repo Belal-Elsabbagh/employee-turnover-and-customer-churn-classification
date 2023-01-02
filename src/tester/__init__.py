@@ -1,4 +1,5 @@
 import json
+from timeit import default_timer
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -10,7 +11,11 @@ from src.trainer import train_model
 
 
 def test_model(model, x_test, y_test):
-    return score_test(model.predict(x_test), y_test)
+    start = default_timer()
+    res = score_test(model.predict(x_test), y_test)
+    print(f'Tested {model.__class__.__name__} model in {round(default_timer() - start, 2)} seconds.\n')
+    return res
+
 
 
 def score_test(y_pred: np.ndarray, y_test):
@@ -50,13 +55,13 @@ def base_test(
     label_train = label_train[target_col].tolist()
     label_test = label_test[target_col].tolist()
     model = train_model(base_model, feature_train, label_train)
+    start = default_timer()
     test_results = test_model(model, feature_test, label_test)
     report = {
         'model': base_model.__class__.__name__,
         'results': test_results
     }
     save_test_results(report)
-    print('Tested model.')
     return test_results
 
 
